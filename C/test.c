@@ -1,4 +1,4 @@
-#include "hifo.h"
+#include "hwifo.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -13,46 +13,46 @@
  */
 
 int main(void) {
-    struct hifo* test = HIFO_Create();
+    struct hwifo* test = HWIFO_Create();
 
     puts("...\nAdding six entries!");
-    HIFO_Push(test, 1);
-    HIFO_Push(test, 2);
-    HIFO_Push(test, 3);
-    HIFO_Push(test, 4);
-    HIFO_Push(test, 5);
-    HIFO_Push(test, 6);
-    HIFO_Dump(test);
+    HWIFO_Push(test, 1);
+    HWIFO_Push(test, 2);
+    HWIFO_Push(test, 3);
+    HWIFO_Push(test, 4);
+    HWIFO_Push(test, 5);
+    HWIFO_Push(test, 6);
+    HWIFO_Dump(test);
 
     puts("...\nPopping one, pushing one!");
-    HIFO_Pop(test, NULL);
-    HIFO_Push(test, 7);
-    HIFO_Dump(test);
+    HWIFO_Pop(test, NULL);
+    HWIFO_Push(test, 7);
+    HWIFO_Dump(test);
 
     puts("...\nPopping until empty!");
-    while (HIFO_GetSize(test) > 0) {
-        HIFO_Pop(test, NULL);
+    while (HWIFO_GetSize(test) > 0) {
+        HWIFO_Pop(test, NULL);
     }
-    HIFO_Dump(test);
+    HWIFO_Dump(test);
 
     puts("...\nPushing three entries!");
-    HIFO_Push(test, 1);
-    HIFO_Push(test, 2);
-    HIFO_Push(test, 3);
-    HIFO_Dump(test);
+    HWIFO_Push(test, 1);
+    HWIFO_Push(test, 2);
+    HWIFO_Push(test, 3);
+    HWIFO_Dump(test);
 
     puts("...\nEmpty HWIFO!");
-    HIFO_Empty(test);
-    HIFO_Dump(test);
+    HWIFO_Empty(test);
+    HWIFO_Dump(test);
 
     puts("...\nPushing one, peeking!");
-    HIFO_Push(test, 1);
+    HWIFO_Push(test, 1);
     int data = 666;
-    HIFO_Peek(test, &data);
+    HWIFO_Peek(test, &data);
     printf("Peeked: %d\n", data);
-    HIFO_Dump(test);
+    HWIFO_Dump(test);
 
-    HIFO_Destroy(test);
+    HWIFO_Destroy(test);
 
     return EXIT_SUCCESS;
 }
